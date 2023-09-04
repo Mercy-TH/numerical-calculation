@@ -6,71 +6,39 @@
 #define NUMERICAL_CALCULATION_COMMON_H
 
 #include <vector>
+#include <limits>
+#include <cmath>
+#include <iostream>
 
 using namespace std;
 
-template<typename T>
-vector<T> operator-(const vector<T> &v1, const vector<T> &v2) {
-    vector<T> v(v1);
-    for (int i = 0; i < v1.size(); i++) {
-        v[i] = v1[i] - v2[i];
-    }
-    return v;
-}
+bool vectors_contain_zero(const vector<vector<double>> &vec);
+
+bool vector_contain_zero(const vector<double> &vec);
 
 template<typename T>
-vector<T> operator+(const vector<T> &v1, const vector<T> &v2) {
-    vector<T> v(v1);
-    for (int i = 0; i < v1.size(); i++) {
-        v[i] = v1[i] + v2[i];
-    }
-    return v;
-}
+vector<T> operator-(const vector<T> &v1, const vector<T> &v2);
 
 template<typename T>
-vector<T> operator*(const vector<T> &v1, const T &num) {
-    vector<T> v(v1);
-    for (int i = 0; i < v1.size(); i++) {
-        v[i] = v1[i] * num;
-    }
-    return v;
-}
+vector<T> operator+(const vector<T> &v1, const vector<T> &v2);
 
 template<typename T>
-vector<T> operator*(const T &num, const vector<T> &v1) {
-    vector<T> v(v1);
-    for (int i = 0; i < v1.size(); i++) {
-        v[i] = v1[i] * num;
-    }
-    return v;
-}
+vector<T> operator*(const vector<T> &v1, const T &num);
 
 template<typename T>
-vector<T> operator/(const vector<T> &v1, const T &num) {
-    vector<T> v(v1);
-    for (int i = 0; i < v1.size(); i++) {
-        v[i] = v1[i] / num;
-    }
-    return v;
-}
+vector<T> operator*(const T &num, const vector<T> &v1);
 
 template<typename T>
-vector<T> operator/(const T &num, const vector<T> &v1) {
-    vector<T> v(v1);
-    for (int i = 0; i < v1.size(); i++) {
-        v[i] = v1[i] / num;
-    }
-    return v;
-}
+vector<T> operator*(const vector<T> &v1, const vector<T> &v2);
 
 template<typename T>
-vector<T> operator/(const vector<T> &v1, const vector<T> &v2) {
-    vector<T> v(v1);
-    for (int i = 0; i < v1.size(); i++) {
-        v[i] = v1[i] / v2[i];
-    }
-    return v;
-}
+vector<T> operator/(const vector<T> &v1, const T &num);
+
+template<typename T>
+vector<T> operator/(const T &num, const vector<T> &v1);
+
+template<typename T>
+vector<T> operator/(const vector<T> &v1, const vector<T> &v2);
 
 
 #endif //NUMERICAL_CALCULATION_COMMON_H
