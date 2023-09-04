@@ -2,54 +2,49 @@
 // Created by tanhe on 2023/8/28.
 //
 
-#ifndef NUMERICAL_CALCULATION_DET_H
-#define NUMERICAL_CALCULATION_DET_H
-#pragma once
+#ifndef NUMERICAL_CALCULATION_DETERMINANT_H
+#define NUMERICAL_CALCULATION_DETERMINANT_H
 
 #include <vector>
 #include <iostream>
 #include <cmath>
-#include <set>
-#include <algorithm>
 #include "common.h"
 
 using namespace std;
 
-class Det {
+
+class Determinant {
 public:
-    explicit Det(const vector<vector<double>> &vector);
+    explicit Determinant(vector<double> &vec);
 
-    Det(Det const &det);
+    explicit Determinant(vector<vector<double>> &vec);
 
-    double getValue(int i, int j);
+    Determinant(Determinant const &det);
 
-    int getDegree() const;
+    ~Determinant() = default;
 
-    double getValue();
-
-private:
+    vector<double> v1;
+    vector<vector<double>> v2;
     //行列式的阶数
-    int _degree = (int) this->_v.size();
-    vector<vector<double>> _v;
+    int degree;
+    //行列式的值
+    double val;
+private:
+    double getVal();
+
+    //逆序数
+    static int inverseOrderNum(vector<int> &vec);
 
     //求阶乘
-    int _cal_factorial(int n);
+    int cal_factorial(int n);
 
-    //化上三角
-    vector<vector<double>> _2uppertriangle(vector<vector<double>> &vec);
+    //全排列
+    void permute(int start, vector<int> &vec, vector<vector<int>> &result);
 
-    //化主对角为非0
-    vector<vector<double>> _2nonzerodiagonal(vector<vector<double>> &vec);
+    //按索引交换vector里面的元素
+    static void swap(vector<int> &vec, int a, int b);
 
-    //交换vector
-    static void swap(vector<double> &v1, vector<double> &v2);
-
-    //判断行列式某列是否成比例或者为0
-    bool _judgedet(vector<vector<double>> &vec);
-
-    //判断是否是上三角
-    bool _istriangle(vector<vector<double>> &vec);
 };
 
 
-#endif //NUMERICAL_CALCULATION_DET_H
+#endif //NUMERICAL_CALCULATION_DETERMINANT_H
